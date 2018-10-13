@@ -79,6 +79,7 @@ public class Mp3Activity extends AppCompatActivity implements Mp3Contract.View, 
     private ProgressDialog mProgressDialog;
     private BottomNavigationView mBottomNavigationView;
     private Button mUploadButton;
+    private TextView mNowPlayingTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,6 +106,7 @@ public class Mp3Activity extends AppCompatActivity implements Mp3Contract.View, 
         EditText mSearchEditText = findViewById(R.id.et_search);
         myDb = new DatabaseHelper(this);
         mUploadButton = findViewById(R.id.button_upload);
+        mNowPlayingTextView = findViewById(R.id.text_now_playing);
 
         mUploadButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -222,6 +224,7 @@ public class Mp3Activity extends AppCompatActivity implements Mp3Contract.View, 
 
             myDb.updateData(songName, 1);
             mp3Adapter.notifyItemChanged(mPosition);
+            mProgressDialog = null;
         }
     }
 
@@ -234,6 +237,7 @@ public class Mp3Activity extends AppCompatActivity implements Mp3Contract.View, 
     public void showProgress() {
 
         mMp3Recycler.setVisibility(View.GONE);
+        mNowPlayingTextView.setVisibility(View.GONE);
         mUploadButton.setVisibility(View.GONE);
         findViewById(R.id.progressBar).setVisibility(View.VISIBLE);
     }
@@ -243,6 +247,7 @@ public class Mp3Activity extends AppCompatActivity implements Mp3Contract.View, 
 
         mMp3Recycler.setVisibility(View.VISIBLE);
         mUploadButton.setVisibility(View.VISIBLE);
+        mNowPlayingTextView.setVisibility(View.VISIBLE);
         findViewById(R.id.progressBar).setVisibility(View.GONE);
     }
 
@@ -353,6 +358,7 @@ public class Mp3Activity extends AppCompatActivity implements Mp3Contract.View, 
                     end.setVisibility(View.GONE);
                     start.setText("00:00");
                     AppController.isPlaying = false;
+                    mNowPlayingTextView.setText("Not Playing");
                     play.setImageDrawable(getResources().getDrawable(R.drawable.ic_play));
                     if (mMediaPlayer != null) mMediaPlayer.release();
                     mMediaPlayer = null;
@@ -368,6 +374,7 @@ public class Mp3Activity extends AppCompatActivity implements Mp3Contract.View, 
             end.setText(AppController.formatMilliseconds(mMediaPlayer.getDuration()));
 
             mMediaPlayer.start();
+            mNowPlayingTextView.setText("Now Playing : "+songName);
             AppController.isPlaying = true;
             AppController.nowPlayingPosition = position;
             Mp3Activity.this.runOnUiThread(mRunnable);
@@ -390,6 +397,7 @@ public class Mp3Activity extends AppCompatActivity implements Mp3Contract.View, 
 
         if (mMediaPlayer != null && mMediaPlayer.isPlaying()) {
             mMediaPlayer.pause();
+            mNowPlayingTextView.setText("Not Playing");
             AppController.isPlaying = false;
             mHandler.removeCallbacks(mRunnable);
         }

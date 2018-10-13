@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.antony.choirapp.R;
 import com.antony.choirapp.database.DatabaseHelper;
@@ -95,6 +96,9 @@ public class Mp3Adapter extends RecyclerView.Adapter<Mp3Adapter.MyViewHolder> {
                             mPlay.setImageDrawable(itemView.getContext().getResources().getDrawable(R.drawable.ic_play));
                             mListener.onPauseClicked();
                         }
+                    } else if (AppController.nowPlayingPosition != getAdapterPosition()) {
+
+                        Toast.makeText(itemView.getContext(), "Stop the player to change the song", Toast.LENGTH_SHORT).show();
                     }
                 }
             });
