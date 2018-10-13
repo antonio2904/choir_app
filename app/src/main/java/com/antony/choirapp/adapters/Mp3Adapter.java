@@ -57,6 +57,15 @@ public class Mp3Adapter extends RecyclerView.Adapter<Mp3Adapter.MyViewHolder> {
 
             AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
 
+            mDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    mListener.onDelete(mp3ItemList.get(getAdapterPosition()).getmSongName());
+
+                }
+            });
+
             mPlay.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -126,6 +135,9 @@ public class Mp3Adapter extends RecyclerView.Adapter<Mp3Adapter.MyViewHolder> {
         myViewHolder.mSongStartTextView.setText("00:00");
         myViewHolder.mSongEndTextView.setText("00:00");
 
+        if (mp3ItemList.get(i).getmAddedUser().equals(AppController.mUserName))
+            myViewHolder.mDelete.setVisibility(View.VISIBLE);
+
         if (!isDownloaded) {
             myViewHolder.mPlay.setImageResource(R.drawable.ic_download);
             myViewHolder.mSeekBar.setVisibility(View.GONE);
@@ -148,5 +160,7 @@ public class Mp3Adapter extends RecyclerView.Adapter<Mp3Adapter.MyViewHolder> {
         void onSeek(int progress, SeekBar seekBar);
 
         void onPauseClicked();
+
+        void onDelete(String songName);
     }
 }

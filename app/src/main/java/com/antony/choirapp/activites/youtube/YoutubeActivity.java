@@ -34,7 +34,7 @@ public class YoutubeActivity extends AppCompatActivity {
 
                     case R.id.navigation_home:
 
-                        onBackPressed();
+//                        onBackPressed();
                         break;
 
                     case R.id.navigation_karaoke:
