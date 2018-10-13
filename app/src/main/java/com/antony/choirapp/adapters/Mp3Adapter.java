@@ -66,6 +66,14 @@ public class Mp3Adapter extends RecyclerView.Adapter<Mp3Adapter.MyViewHolder> {
                 }
             });
 
+            mShare.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    mListener.onShareAudio(mp3ItemList.get(getAdapterPosition()).getmSongName());
+                }
+            });
+
             mPlay.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -162,5 +170,7 @@ public class Mp3Adapter extends RecyclerView.Adapter<Mp3Adapter.MyViewHolder> {
         void onPauseClicked();
 
         void onDelete(String songName);
+
+        void onShareAudio(String songName);
     }
 }

@@ -17,6 +17,7 @@ public class Mp3Presenter implements Mp3Contract.Presenter, Mp3Contract.Interact
     private Mp3Contract.View view;
     private Mp3Contract.Interactor interactor;
     private long mFileSize;
+    private String mSongName;
 
     Mp3Presenter(Mp3Contract.View view, Mp3Contract.Interactor interactor) {
 
@@ -64,6 +65,8 @@ public class Mp3Presenter implements Mp3Contract.Presenter, Mp3Contract.Interact
 
             if (!localFile.exists()) {
 
+                this.mSongName = songName;
+
                 interactor.downloadSong(this, songName,storageRef,localFile);
             }
             else{
@@ -97,6 +100,10 @@ public class Mp3Presenter implements Mp3Contract.Presenter, Mp3Contract.Interact
     public void onProgress(int progress) {
 
         view.onProgress(progress);
+        if(progress == 100){
+
+            view.onSuccess(mSongName,"downloaded");
+        }
     }
 
     @Override

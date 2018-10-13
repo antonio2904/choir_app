@@ -269,7 +269,10 @@ public class Mp3Activity extends AppCompatActivity implements Mp3Contract.View, 
             mProgressDialog.setProgress(progress);
         }
 
-        if (progress == 100) mProgressDialog.dismiss();
+        if (progress == 100) {
+
+            mProgressDialog.dismiss();
+        }
     }
 
     @Override
@@ -426,6 +429,23 @@ public class Mp3Activity extends AppCompatActivity implements Mp3Contract.View, 
             }
         } else {
             Toast.makeText(Mp3Activity.this, "Please check your internet connection", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onShareAudio(String songName) {
+
+        if (!AppController.isPlaying) {
+            Uri uri;
+            if (!myDb.getPath(songName).equals("")) uri = Uri.parse(myDb.getPath(songName));
+            else
+                uri = Uri.parse(new File(Environment.getExternalStorageDirectory() + "/MTC_CHOIR/" + songName + ".mp3").toString());
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("audio/mpeg");
+            intent.putExtra(Intent.EXTRA_STREAM, uri);
+            startActivity(intent);
+        } else {
+            Toast.makeText(this, "Stop the player to share", Toast.LENGTH_SHORT).show();
         }
     }
 
