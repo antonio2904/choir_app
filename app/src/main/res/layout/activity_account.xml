@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.antony.choirapp.activites.account.AccountActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/pageBackgroundRed"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:contentInsetStart="0dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/toolbar_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:padding="5dp"
+                app:srcCompat="@drawable/ic_back" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/raleway_bold"
+                android:text="Profile"
+                android:textColor="@color/textColorWhite"
+                android:textSize="18sp" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#bbbbbb"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/layout_name"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@color/textColorWhite"
+            android:gravity="center">
+
+
+            <TextView
+                android:id="@+id/text_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/raleway_black"
+                android:textColor="@color/textColorBlack"
+                android:textSize="20sp"
+                tools:text="Antony" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_below="@id/layout_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_above="@id/bottomNavigationView"
+            android:layout_marginBottom="5dp"
+            android:background="@color/textColorWhite"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_change_name"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:fontFamily="@font/raleway_regular"
+                android:gravity="start|center_vertical"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:text="Change Name"
+                android:textColor="@color/textColorBlack" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:background="#bbbbbb" />
+
+            <TextView
+                android:id="@+id/text_share_app"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:fontFamily="@font/raleway_regular"
+                android:gravity="start|center_vertical"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:text="Share App"
+                android:textColor="@color/textColorBlack" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:background="#bbbbbb" />
+
+            <TextView
+                android:id="@+id/text_app_version"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:fontFamily="@font/raleway_regular"
+                android:gravity="start|center_vertical"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:text="App Version : 1.0"
+                android:textColor="@color/textColorBlack" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:background="#bbbbbb" />
+
+        </LinearLayout>
+
+        <android.support.design.widget.BottomNavigationView
+            android:id="@+id/bottomNavigationView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/textColorWhite"
+            app:menu="@menu/bottom_navigation_items" />
+
+    </RelativeLayout>
+
+</LinearLayout>

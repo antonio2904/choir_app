@@ -34,6 +34,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.antony.choirapp.R;
+import com.antony.choirapp.activites.account.AccountActivity;
 import com.antony.choirapp.activites.youtube.YoutubeActivity;
 import com.antony.choirapp.adapters.Mp3Adapter;
 import com.antony.choirapp.database.DatabaseHelper;
@@ -138,6 +139,14 @@ public class Mp3Activity extends AppCompatActivity implements Mp3Contract.View, 
                         break;
 
                     case R.id.navigation_karaoke:
+
+                        break;
+
+                    case R.id.navigation_profile:
+
+                        intent = new Intent(Mp3Activity.this, AccountActivity.class);
+                        startActivity(intent);
+                        overridePendingTransition(0, 0);
 
                         break;
                 }
@@ -374,7 +383,7 @@ public class Mp3Activity extends AppCompatActivity implements Mp3Contract.View, 
             end.setText(AppController.formatMilliseconds(mMediaPlayer.getDuration()));
 
             mMediaPlayer.start();
-            mNowPlayingTextView.setText("Now Playing : "+songName);
+            mNowPlayingTextView.setText("Now Playing : " + songName);
             AppController.isPlaying = true;
             AppController.nowPlayingPosition = position;
             Mp3Activity.this.runOnUiThread(mRunnable);

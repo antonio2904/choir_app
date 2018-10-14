@@ -18,7 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/Applications/Android%20Studio%202.app/Contents/plugins/android/lib/android.jar!/images/material_design_icons/image/ic_music_note_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/Applications/Android%20Studio%202.app/Contents/plugins/android/lib/android.jar!/images/material_design_icons/alert/ic_error_outline_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -28,8 +28,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_karaoke" />
-                            <entry key="sourceFile" value="$USER_HOME$/Desktop/menu.svg" />
+                            <entry key="outputName" value="ic_about" />
+                            <entry key="sourceFile" value="$USER_HOME$/Desktop/if_icon-ios7-arrow-back_211686.svg" />
                           </map>
                         </option>
                       </PersistentState>

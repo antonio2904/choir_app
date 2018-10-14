@@ -11,7 +11,12 @@
         android:title="Youtube" />
     <item
         android:id="@+id/navigation_karaoke"
+        android:checkable="false"
         android:icon="@drawable/ic_karaoke"
         android:title="Karaoke" />
+    <item
+        android:id="@+id/navigation_profile"
+        android:icon="@drawable/ic_account"
+        android:title="Me" />
 </menu>
 
